@@ -7,11 +7,11 @@ const router = express.Router()
 // All routes below are protected — user must be logged in
 router.use(protect); // applies protect to every route in this file
 
+router.get('/predict', predictCycle)
+
 router.get('/', getCycle)
 
 router.post('/', createCycle)
-
-router.get('/predict', predictCycle)
 
 router.get('/:id', getCycleById)
 

@@ -10,13 +10,19 @@ dotenv.config()
 
 const app = express()
 
-// CORS configuration - allow both production and development
+// CORS configuration
 app.use(cors({
   origin: ['https://cyclestracker.netlify.app', 'http://localhost:3000'],
   credentials: true
 }))
 
 app.use(express.json())
+
+// Log all requests (for debugging)
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
 
 // Routes
 app.use('/api/auth', authRoutes)
@@ -27,6 +33,12 @@ app.use('/api/profile', profileRoutes)
 app.get('/', (req, res) => {
   res.json({ message: 'Cycle Tracker API is running' })
 })
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Error:', err.message);
+  res.status(500).json({ message: 'Server error', error: err.message });
+});
 
 const PORT = process.env.PORT || 5000
 
