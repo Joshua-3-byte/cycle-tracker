@@ -1,0 +1,222 @@
+/* Import the base calendar styles */
+@import 'react-calendar/dist/Calendar.css';
+
+/* Override with our purple/pink theme */
+.react-calendar {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Mobile: smaller padding */
+@media (max-width: 768px) {
+  .react-calendar {
+    padding: 10px;
+    border-radius: 8px;
+  }
+}
+
+.react-calendar__navigation {
+  display: flex;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .react-calendar__navigation {
+    height: 40px;
+    margin-bottom: 10px;
+  }
+}
+
+.react-calendar__navigation button {
+  color: #6c3483;
+  min-width: 44px;
+  background: none;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+@media (max-width: 768px) {
+  .react-calendar__navigation button {
+    min-width: 36px;
+    font-size: 16px;
+  }
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #f5f0ff;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  color: #9b59b6;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .react-calendar__month-view__weekdays {
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .react-calendar__month-view__weekdays__weekday abbr {
+    text-decoration: none;
+  }
+}
+
+.react-calendar__month-view__days__day {
+  border-radius: 8px;
+  height: 60px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+@media (max-width: 768px) {
+  .react-calendar__month-view__days__day {
+    height: 45px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .react-calendar__month-view__days__day {
+    height: 40px;
+    font-size: 11px;
+  }
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #f5f0ff;
+}
+
+.react-calendar__tile--now {
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.1) 0%, rgba(255, 105, 180, 0.1) 100%);
+  font-weight: bold;
+}
+
+.react-calendar__tile--active {
+  background: #9b59b6 !important;
+  color: white;
+}
+
+/* Custom tile classes for cycle tracking */
+.period-day {
+  background: linear-gradient(135deg, #9b59b6 0%, #ff69b4 100%) !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.predicted-period-day {
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.3) 0%, rgba(255, 105, 180, 0.3) 100%) !important;
+  color: #6c3483 !important;
+  border: 2px dashed #9b59b6;
+}
+
+.fertile-day {
+  background: #d4edda !important;
+  color: #155724 !important;
+}
+
+.ovulation-day {
+  background: #fff3cd !important;
+  color: #856404 !important;
+  border: 2px solid #ffc107;
+  position: relative;
+}
+
+.ovulation-day::after {
+  content: '🥚';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .ovulation-day::after {
+    font-size: 10px;
+    top: 1px;
+    right: 1px;
+  }
+}
+
+/* Legend */
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .calendar-legend {
+    gap: 10px;
+    padding: 10px;
+    margin-top: 15px;
+  }
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .legend-item {
+    font-size: 12px;
+    gap: 6px;
+  }
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .legend-color {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.legend-color.period {
+  background: linear-gradient(135deg, #9b59b6 0%, #ff69b4 100%);
+}
+
+.legend-color.predicted {
+  background: linear-gradient(135deg, rgba(155, 89, 182, 0.3) 0%, rgba(255, 105, 180, 0.3) 100%);
+  border: 2px dashed #9b59b6;
+}
+
+.legend-color.fertile {
+  background: #d4edda;
+}
+
+.legend-color.ovulation {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+}
