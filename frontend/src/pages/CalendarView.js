@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
-import { isSameDay, parseISO, addDays, isWithinInterval } from 'date-fns';
+import { isSameDay, parseISO,  isWithinInterval } from 'date-fns';
 import { getCycles, getPrediction } from '../utils/api';
 import '../Calendar.css';
 import Navbar from '../components/Navbar';
