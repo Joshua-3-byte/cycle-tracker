@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+// Use the Render backend URL from environment variables
+const API_URL = process.env.REACT_APP_API_URL;
 
 // Helper function to get auth headers
 const getAuthHeaders = () => {
@@ -23,7 +24,7 @@ export const updateCycle = (id, cycleData) =>
   axios.put(`${API_URL}/cycles/${id}`, cycleData, getAuthHeaders());
 
 export const deleteCycle = (id) =>
-  axios.delete(`${API_URL}/cycles/${id}`, getAuthHeaders());
+  axios.delete(`${API_URL}/cycles`, getAuthHeaders());
 
 export const getPrediction = () =>
   axios.get(`${API_URL}/cycles/predict`, getAuthHeaders());
