@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import toast from 'react-hot-toast';  // Add this
 import { getCycles, createCycle, deleteCycle, getPrediction } from '../utils/api';
 import PredictionCard from '../components/PredictionCard';
 import CycleForm from '../components/CycleForm';
@@ -29,36 +28,33 @@ const Dashboard = () => {
       }
     } catch (error) {
       console.error('Error fetching data:', error);
-      toast.error('Failed to load cycle data');
     } finally {
       setLoading(false);
     }
   };
 
   const handleCreateCycle = async (formData) => {
-    const loadingToast = toast.loading('Saving cycle...');
-    
     try {
       await createCycle(formData);
-      toast.success('Cycle logged successfully!', { id: loadingToast });
       setShowForm(false);
       fetchData();
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to create cycle', { id: loadingToast });
+      console.error('Create error:', error);
+      alert(error.response?.data?.message || 'Failed to create cycle');
     }
   };
 
   const handleDeleteCycle = async (id) => {
     if (!window.confirm('Delete this cycle?')) return;
     
-    const loadingToast = toast.loading('Deleting cycle...');
-    
     try {
+      console.log('Deleting cycle with ID:', id); // Debug log
       await deleteCycle(id);
-      toast.success('Cycle deleted successfully', { id: loadingToast });
       fetchData();
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to delete cycle', { id: loadingToast });
+      console.error('Delete error:', error);
+      console.error('Error details:', error.response); // Debug log
+      alert(error.response?.data?.message || 'Failed to delete cycle');
     }
   };
 
