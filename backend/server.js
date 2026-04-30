@@ -12,8 +12,10 @@ const app = express()
 
 // CORS configuration
 app.use(cors({
-  origin: ['https://cyclestracker-2.netlify.app', 'http://localhost:3000'],
-  credentials: true
+  origin: [
+    'https://cycletracker-2.netlify.app',
+    'http://localhost:3000'
+  ]
 }))
 
 app.use(express.json())
