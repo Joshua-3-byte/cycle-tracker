@@ -12,7 +12,7 @@ const app = express()
 
 // CORS configuration
 app.use(cors({
-  origin: ['https://cyclestracker.netlify.app', 'http://localhost:3000'],
+  origin: ['https://cyclestracker-2.netlify.app', 'http://localhost:3000'],
   credentials: true
 }))
 
@@ -44,6 +44,6 @@ const PORT = process.env.PORT || 5000
 
 connectDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`server running on port ${PORT}`)
+    console.log(`server running on  port ${PORT}`)
   })
 })
